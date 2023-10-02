@@ -101,14 +101,24 @@ function longestValidParentheses(s: string): number {
                 let nextStringSet: string = stringSets[i + 1];
                 if (!nextStringSet.length) {
                     // closeCount1++;
-                    if (i + 1 < stringSets.length - 1) {
+                    // if (i + 1 < stringSets.length - 1) {
+                    if (i + 1 < stringSets.length - 1 && !closeCount) {
                         closeCount1++;
+                    } else if (i + 1 < stringSets.length - 1 && closeCount) {
+                        closeCount++;
+                        closeCount1 = 0;
                     }
                     for (let j: number = i + 2; j < stringSets.length; j++) {
                         if (!stringSets[j].length) {
                             // closeCount1++;
                             if (j < stringSets.length - 1) {
-                                closeCount1++;
+                                // closeCount1++;
+                                if (j < stringSets.length - 1 && !closeCount) {
+                                    closeCount1++;
+                                } else if (j < stringSets.length - 1 && closeCount) {
+                                    closeCount++;
+                                    closeCount1 = 0;
+                                }
                             }
                         } else if (prevStringSet.length) {
                             nextStringSetIndex = j;
@@ -149,7 +159,7 @@ function longestValidParentheses(s: string): number {
                     countSets.push(closeCount * 2);
                     closeCount = 0;
                 }
-                if (!closeCount) {
+                if (!closeCount && closeCount1) {
                     countSets.push(closeCount1 * 2);
                     closeCount1 = 0;
                 }
