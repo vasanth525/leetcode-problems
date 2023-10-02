@@ -1,0 +1,19 @@
+{
+  "name": "leetcode_problems_run_project",
+  "version": "1.0.0",
+  "description": "For running leet code problems",
+  "main": "index.js",
+  "scripts": {
+    "run": "tsc index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vasanth",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/shelljs": "^0.8.13",
+    "shelljs": "^0.8.5"
+  }
+}
